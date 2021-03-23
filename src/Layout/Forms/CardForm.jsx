@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Link,
-  NavLink,
-  Route,
-  Switch,
-  useHistory,
-  useRouteMatch,
-} from "react-router-dom";
+import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import { updateCard, createCard, readCard } from "../../utils/api";
 
 export default function CardForm({
@@ -20,7 +13,7 @@ export default function CardForm({
 }) {
   const [formData, setFormData] = useState({ front: "", back: "" });
   const history = useHistory();
-  const { url, params, path } = useRouteMatch();
+  const { url } = useRouteMatch();
   const subUrls = url.split(`/`);
   const [edit, setEdit] = useState(false);
   // if edit then setFormdata to current card using card id from url
@@ -54,13 +47,13 @@ export default function CardForm({
       .then(setFormData)
       .then(() => {
         deckTemp.cards = deckTemp.cards.filter(
-          (card) => card.id != formData.id
+          (card) => card.id !== formData.id
         );
         deckTemp.cards.push(formData);
         setDeck(deckTemp);
       })
       .then(() => {
-        decksTemp = decksTemp.filter((theDeck) => theDeck.id != deck.id);
+        decksTemp = decksTemp.filter((theDeck) => theDeck.id !== deck.id);
         decksTemp.push(deckTemp);
         setDecks(decksTemp);
         if (!edit) {

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import DeckView from "./DeckView";
 //import Header from "../Header";
 //import NotFound from "../NotFound";
-import { Link, NavLink, Route, Switch, useRouteMatch } from "react-router-dom";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 // import Deck from "./Deck";
 // import { listDecks} from "../../utils/api/index"
 import BreadCrumb from "../BreadCrumb";
@@ -17,9 +17,9 @@ import EditCard from "../Card/EditCard";
 export default function ViewDeck({ decks, setDecks }) {
   const [deck, setDeck] = useState({});
   const { path, url, params } = useRouteMatch();
-  const [error, setError] = useState(undefined);
+
   const [cards, setCards] = useState([]);
-  const subUrls = url.split(`/`);
+
   let deckId;
   for (let param in params) {
     if (param === "deckId") {
@@ -31,14 +31,14 @@ export default function ViewDeck({ decks, setDecks }) {
     readDeck(deckId, abortController.signal)
       .then(setDeck)
       .then(() => {
-        if (deck.cards != undefined) setCards([...deck.cards]);
+        if (deck.cards !== undefined) setCards([...deck.cards]);
       })
-      .catch(setError);
+      .catch(console.log("bad"));
 
     return () => abortController.abort();
   }, []);
   useEffect(() => {
-    if (deck.cards != undefined) setCards([...deck.cards]);
+    if (deck.cards !== undefined) setCards([...deck.cards]);
   }, [deck]);
 
   return (

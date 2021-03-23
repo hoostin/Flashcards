@@ -1,12 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
-import {
-  Link,
-  NavLink,
-  Route,
-  Switch,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
+import React from "react";
+import { Link, useRouteMatch } from "react-router-dom";
 import { deleteCard } from "../../utils/api";
 export default function CardView({ card: { id, front, back }, deck, setDeck }) {
   const url = useRouteMatch().url;

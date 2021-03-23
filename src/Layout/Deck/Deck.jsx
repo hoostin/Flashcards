@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 //import CreateDeckButton from "./CreateDeckButton";
 //import Header from "../Header";
 //import NotFound from "../NotFound";
-import { deleteDeck, listCards } from "../../utils/api/index";
+import { deleteDeck } from "../../utils/api/index";
 import { Link, useHistory } from "react-router-dom";
 //import { listDecks} from "../../utils/api/index"
 
 export default function Deck({ deck, decks, setDecks }) {
   let length = 0;
   const history = useHistory();
-  if (deck.cards != undefined) {
+  if (deck.cards !== undefined) {
     length = deck.cards.length;
   }
   const cardCount = length;
@@ -19,7 +19,7 @@ export default function Deck({ deck, decks, setDecks }) {
     if (window.confirm("You sure you want to delete Deck?")) {
       deleteDeck(deck.id, abortController.signal)
         .then((response) => {
-          const tempDecks = decks.filter((theDeck) => theDeck.id != deck.id);
+          const tempDecks = decks.filter((theDeck) => theDeck.id !== deck.id);
           setDecks(() => tempDecks);
           history.push(`/`);
         })

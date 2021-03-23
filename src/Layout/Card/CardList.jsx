@@ -1,7 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect } from "react";
 
-import { listCards } from "../../utils/api/index";
-import Alert from "../Alert";
 import CardView from "./CardView";
 
 export default function CardList({
@@ -15,14 +13,14 @@ export default function CardList({
 }) {
   useEffect(() => {
     const abortController = new AbortController();
-    if (deck.cards != undefined) {
+    if (deck.cards !== undefined) {
       const tempCards = deck.cards;
       tempCards.sort((card1, card2) => card1.id - card2.id);
       setCards(tempCards);
     }
 
     return () => abortController.abort();
-  }, [deck]);
+  }, [deck, setCards]);
   // console.log(deck.cards);
   // console.log(cards);
   const list = cards.map((card, index) => (

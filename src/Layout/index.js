@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import DeckList from "./Deck/DeckList";
 import ViewDeck from "./Deck/ViewDeck";
-import {
-  Link,
-  NavLink,
-  Route,
-  Switch,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import CreateDeck from "./Deck/CreateDeck";
 function Layout() {
   const [decks, setDecks] = useState([]);

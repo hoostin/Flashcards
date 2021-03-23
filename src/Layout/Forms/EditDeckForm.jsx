@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  Link,
-  NavLink,
-  Route,
-  Switch,
-  useHistory,
-  useRouteMatch,
-} from "react-router-dom";
+import { Link, useHistory, useRouteMatch } from "react-router-dom";
 import { updateDeck, listDecks } from "../../utils/api";
-import DeckList from "../Deck/DeckList";
 
 export default function EditDeckForm({
   decks,

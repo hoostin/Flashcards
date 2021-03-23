@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NextButton from "./NextButton";
 
 export default function StudyCard({ cards }) {
@@ -14,17 +14,17 @@ export default function StudyCard({ cards }) {
   //   const [content, setContent] = useState("");
 
   if (flip) {
-    if (cards.length != 0) {
+    if (cards.length !== 0) {
       content = cards[cardNum].back;
     }
   } else {
-    if (cards.length != 0) {
+    if (cards.length !== 0) {
       content = cards[cardNum].front;
     }
     // setContent("test");
     // return null;
   }
-  if (cards.length != 0) {
+  if (cards.length !== 0) {
     return (
       <div className="card mb-3">
         <div className="card-body">

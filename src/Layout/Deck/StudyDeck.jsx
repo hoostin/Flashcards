@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { listCards } from "../../utils/api";
+import React from "react";
+
 import BreadCrumb from "../BreadCrumb";
 import StudyCard from "../Card/StudyCard";
 
@@ -17,17 +17,17 @@ export default function StudyDeck({ decks, deck, cards }) {
   // } else {
   //   cardAmount = 0;
   // }
-  useEffect(() => {
-    const abortController = new AbortController();
-    // listCards(deckId, abortController.signal)
-    //   .then(setCards)
-    //   .then(() => {
-    //     cardAmount = cards.length;
-    //   })
-    //   .catch(console.log("bad magnitude 10"));
-    cardAmount = cards.length;
-    return () => abortController.abort();
-  }, [cards]);
+  // useEffect(() => {
+  //   const abortController = new AbortController();
+  //   // listCards(deckId, abortController.signal)
+  //   //   .then(setCards)
+  //   //   .then(() => {
+  //   //     cardAmount = cards.length;
+  //   //   })
+  //   //   .catch(console.log("bad magnitude 10"));
+  //   cardAmount = cards.length;
+  //   return () => abortController.abort();
+  // }, [cards]);
   return (
     <div>
       <BreadCrumb decks={decks} />

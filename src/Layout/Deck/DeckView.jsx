@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from "react";
-import CreateDeckButton from "./CreateDeckButton";
-import {
-  Link,
-  NavLink,
-  Route,
-  Switch,
-  useHistory,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
-import Deck from "./Deck";
-import { deleteDeck, listDecks } from "../../utils/api/index";
+import React from "react";
+
+import { Link, useHistory } from "react-router-dom";
+
+import { deleteDeck } from "../../utils/api/index";
 
 export default function DeckView({ deck, url, decks, setDecks }) {
   const history = useHistory();
@@ -20,7 +12,7 @@ export default function DeckView({ deck, url, decks, setDecks }) {
     if (window.confirm("You sure you want to delete Deck?")) {
       deleteDeck(deck.id, abortController.signal)
         .then((response) => {
-          const tempDecks = decks.filter((theDeck) => theDeck.id != deck.id);
+          const tempDecks = decks.filter((theDeck) => theDeck.id !== deck.id);
           setDecks(() => tempDecks);
           history.push(`/`);
         })

@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  Link,
-  NavLink,
-  Route,
-  Switch,
-  useHistory,
-  useRouteMatch,
-} from "react-router-dom";
-import { updateDeck, listDecks, createDeck } from "../../utils/api";
+import { Link, useHistory } from "react-router-dom";
+import { createDeck } from "../../utils/api";
 
 export default function CreateDeckForm({ decks, setDecks }) {
   const [name, setName] = useState("");
