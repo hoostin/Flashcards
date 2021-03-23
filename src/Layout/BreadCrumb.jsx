@@ -5,7 +5,7 @@ import { readDeck } from "../utils/api";
 
 export default function BreadCrumb({ decks }) {
   const [deck, setDeck] = useState({});
-  const { url, params, path } = useRouteMatch();
+  const { url, params } = useRouteMatch();
   const [error, setError] = useState(undefined);
   const subUrls = url.split(`/`);
   //console.log(useRouteMatch());
@@ -24,14 +24,14 @@ export default function BreadCrumb({ decks }) {
     const abortController = new AbortController();
     readDeck(deckId, abortController.signal).then(setDeck).catch(setError);
     return () => abortController.abort();
-  }, [decks]);
+  }, [decks, deckId]);
   const list = subUrls.map((aSubUrl, index) => {
     //console.log(aSubUrl);
-    if (deck != undefined) {
+    if (deck !== undefined) {
       let className;
       if (index >= subUrls.length - 1) {
         className = "breadcrumb-item active";
-        if (aSubUrl == deckId && deckId !== "new") {
+        if (aSubUrl === deckId && deckId !== "new") {
           return (
             <li className={className} key={index}>
               {deck.name}
@@ -57,8 +57,9 @@ export default function BreadCrumb({ decks }) {
             } else {
               value = "Edit Deck";
             }
-
             break;
+          default:
+            value = "Error";
         }
         return (
           <li className={className} key={index}>
@@ -69,7 +70,7 @@ export default function BreadCrumb({ decks }) {
         className = "breadcrumb-item";
       }
       if (aSubUrl !== "decks" && aSubUrl !== "") {
-        if (aSubUrl == deckId) {
+        if (aSubUrl === deckId) {
           return (
             <li className={className} key={index}>
               <Link to={`/decks/${aSubUrl}`}>{deck.name}</Link>
@@ -77,7 +78,7 @@ export default function BreadCrumb({ decks }) {
           );
         }
       } else {
-        if (aSubUrl == "") {
+        if (aSubUrl === "") {
           return (
             <li className={className} key={index}>
               <Link to={`${aSubUrl}`} className="oi oi-home">
@@ -90,6 +91,7 @@ export default function BreadCrumb({ decks }) {
     } else {
       return null;
     }
+    return null;
   });
   return (
     <nav aria-label="breadcrumb">

@@ -1,14 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-//import Header from "../Header";
-//import NotFound from "../NotFound";
-// import {
-//   Link,
-//   NavLink,
-//   Route,
-//   Switch,
-//   useParams,
-//   useRouteMatch,
-// } from "react-router-dom";
 
 import { listCards } from "../../utils/api/index";
 import Alert from "../Alert";
@@ -33,8 +23,8 @@ export default function CardList({
 
     return () => abortController.abort();
   }, [deck]);
-  console.log(deck.cards);
-  console.log(cards);
+  // console.log(deck.cards);
+  // console.log(cards);
   const list = cards.map((card, index) => (
     <CardView
       card={card}

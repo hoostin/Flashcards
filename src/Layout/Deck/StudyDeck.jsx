@@ -3,31 +3,31 @@ import { listCards } from "../../utils/api";
 import BreadCrumb from "../BreadCrumb";
 import StudyCard from "../Card/StudyCard";
 
-export default function StudyDeck({ decks, deck }) {
-  let cardAmount = 0;
-  let tempCards = [];
-  if (deck.cards != undefined) {
-    tempCards = deck.cards;
-  }
+export default function StudyDeck({ decks, deck, cards }) {
+  let cardAmount = cards.length;
+  //  let tempCards = [...cards];
+  // if (deck.cards != undefined) {
+  //   tempCards = deck.cards;
+  // }
 
-  const [cards, setCards] = useState([...tempCards]);
-  const deckId = deck.id;
-  if (deck.cards != undefined) {
-    cardAmount = deck.cards.length;
-  } else {
-    cardAmount = 0;
-  }
+  // const [cards, setCards] = useState([...tempCards]);
+  // const deckId = deck.id;
+  // if (deck.cards != undefined) {
+  //   cardAmount = deck.cards.length;
+  // } else {
+  //   cardAmount = 0;
+  // }
   useEffect(() => {
     const abortController = new AbortController();
-    listCards(deckId, abortController.signal)
-      .then(setCards)
-      .then(() => {
-        cardAmount = cards.length;
-      })
-      .catch(console.log("bad magnitude 10"));
-
+    // listCards(deckId, abortController.signal)
+    //   .then(setCards)
+    //   .then(() => {
+    //     cardAmount = cards.length;
+    //   })
+    //   .catch(console.log("bad magnitude 10"));
+    cardAmount = cards.length;
     return () => abortController.abort();
-  }, [deck, decks]);
+  }, [cards]);
   return (
     <div>
       <BreadCrumb decks={decks} />

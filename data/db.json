@@ -82,6 +82,18 @@
       "back": "5",
       "deckId": 3,
       "id": 12
+    },
+    {
+      "front": "6",
+      "back": "6",
+      "deckId": 3,
+      "id": 13
+    },
+    {
+      "front": "7",
+      "back": "7",
+      "deckId": 3,
+      "id": 14
     }
   ]
 }

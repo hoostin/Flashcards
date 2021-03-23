@@ -9,9 +9,15 @@ import {
 } from "react-router-dom";
 import { updateCard, createCard, readCard } from "../../utils/api";
 
-export default function CardForm({ decks, setDecks, deck, setDeck, deckUrl }) {
-  let decksTemp = decks;
-  const deckTemp = deck;
+export default function CardForm({
+  decks,
+  setDecks,
+  deck,
+  setDeck,
+  deckUrl,
+  cards,
+  setCards,
+}) {
   const [formData, setFormData] = useState({ front: "", back: "" });
   const history = useHistory();
   const { url, params, path } = useRouteMatch();
@@ -34,6 +40,8 @@ export default function CardForm({ decks, setDecks, deck, setDeck, deckUrl }) {
     }));
   }
   function submitHandler(event) {
+    let decksTemp = decks;
+    const deckTemp = deck;
     event.preventDefault();
     const abortController = new AbortController();
     let theArguments = [deck.id, formData, abortController.signal];

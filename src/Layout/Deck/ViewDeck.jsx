@@ -31,7 +31,7 @@ export default function ViewDeck({ decks, setDecks }) {
     readDeck(deckId, abortController.signal)
       .then(setDeck)
       .then(() => {
-        setCards([...deck.cards]);
+        if (deck.cards != undefined) setCards([...deck.cards]);
       })
       .catch(setError);
 
@@ -60,6 +60,8 @@ export default function ViewDeck({ decks, setDecks }) {
             setDeck={setDeck}
             deckUrl={url}
             setDecks={setDecks}
+            cards={cards}
+            setCards={setCards}
           />
         </Route>
         <Route path={`${path}/edit`}>
@@ -69,10 +71,12 @@ export default function ViewDeck({ decks, setDecks }) {
             setDeck={setDeck}
             deckUrl={url}
             setDecks={setDecks}
+            cards={cards}
+            setCards={setCards}
           />
         </Route>
         <Route path={`${path}/study`}>
-          <StudyDeck decks={decks} deck={deck} />
+          <StudyDeck decks={decks} deck={deck} cards={cards} />
         </Route>
         <Route path={`${path}`}>
           <BreadCrumb decks={decks} />

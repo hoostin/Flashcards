@@ -10,6 +10,8 @@ export default function CreateCard({
   setDeck,
   deckUrl,
   setDecks,
+  cards,
+  setCards,
 }) {
   return (
     <div>
@@ -21,6 +23,8 @@ export default function CreateCard({
         deckUrl={deckUrl}
         decks={decks}
         setDecks={setDecks}
+        cards={cards}
+        setCards={setCards}
       />
     </div>
   );

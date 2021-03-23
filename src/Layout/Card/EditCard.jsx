@@ -4,7 +4,15 @@ import { Link, NavLink, Route, Switch, useRouteMatch } from "react-router-dom";
 import BreadCrumb from "../BreadCrumb";
 import CardForm from "../Forms/CardForm";
 
-export default function EditCard({ decks, deck, setDeck, deckUrl, setDecks }) {
+export default function EditCard({
+  decks,
+  deck,
+  setDeck,
+  deckUrl,
+  setDecks,
+  cards,
+  setCards,
+}) {
   return (
     <div>
       <BreadCrumb decks={decks} />
@@ -15,6 +23,8 @@ export default function EditCard({ decks, deck, setDeck, deckUrl, setDecks }) {
         deckUrl={deckUrl}
         decks={decks}
         setDecks={setDecks}
+        cards={cards}
+        setCards={setCards}
       />
     </div>
   );
