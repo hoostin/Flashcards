@@ -22,7 +22,7 @@ export default function CardList({
     return () => abortController.abort();
   }, [deck, setCards]);
   // console.log(deck.cards);
-  // console.log(cards);
+  console.log(cards);
   const list = cards.map((card, index) => (
     <CardView
       card={card}

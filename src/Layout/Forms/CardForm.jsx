@@ -16,6 +16,8 @@ export default function CardForm({
   const { url } = useRouteMatch();
   const subUrls = url.split(`/`);
   const [edit, setEdit] = useState(false);
+  let decksTemp = decks;
+  const deckTemp = deck;
   // if edit then setFormdata to current card using card id from url
   useEffect(() => {
     if (subUrls[subUrls.length - 1] === "edit") {
@@ -33,8 +35,6 @@ export default function CardForm({
     }));
   }
   function submitHandler(event) {
-    let decksTemp = decks;
-    const deckTemp = deck;
     event.preventDefault();
     const abortController = new AbortController();
     let theArguments = [deck.id, formData, abortController.signal];
@@ -44,18 +44,24 @@ export default function CardForm({
       handleFunction = updateCard;
     }
     handleFunction(...theArguments) // change to update card for edit
-      .then(setFormData)
-      .then(() => {
+      .then((response) => {
+        // setFormData({ ...response });
+        return { ...response };
+      }) //setFormData
+      .then((formData) => {
+        console.log(formData);
         deckTemp.cards = deckTemp.cards.filter(
           (card) => card.id !== formData.id
         );
+        console.log(`Before ::::: ${deckTemp.cards}`);
         deckTemp.cards.push(formData);
-        setDeck(deckTemp);
+        setDeck({ ...deckTemp });
+        console.log(`After ::::: ${deckTemp.cards}`);
       })
       .then(() => {
         decksTemp = decksTemp.filter((theDeck) => theDeck.id !== deck.id);
         decksTemp.push(deckTemp);
-        setDecks(decksTemp);
+        setDecks([...decksTemp]);
         if (!edit) {
           setFormData({ front: "", back: "" });
         } else {
