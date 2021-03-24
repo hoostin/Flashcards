@@ -54,8 +54,8 @@
       "id": 7
     },
     {
-      "front": "test",
-      "back": "test",
+      "front": "1",
+      "back": "1",
       "deckId": 3,
       "id": 8
     },
@@ -64,36 +64,6 @@
       "back": "2",
       "deckId": 3,
       "id": 9
-    },
-    {
-      "front": "3",
-      "back": "3",
-      "deckId": 3,
-      "id": 10
-    },
-    {
-      "front": "4",
-      "back": "4",
-      "deckId": 3,
-      "id": 11
-    },
-    {
-      "front": "5",
-      "back": "5",
-      "deckId": 3,
-      "id": 12
-    },
-    {
-      "front": "6",
-      "back": "6",
-      "deckId": 3,
-      "id": 13
-    },
-    {
-      "front": "7",
-      "back": "7",
-      "deckId": 3,
-      "id": 14
     }
   ]
 }

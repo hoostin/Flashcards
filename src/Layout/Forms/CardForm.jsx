@@ -44,19 +44,18 @@ export default function CardForm({
       handleFunction = updateCard;
     }
     handleFunction(...theArguments) // change to update card for edit
+      // .then((response) => {
+      //   // setFormData({ ...response });
+      //   return { ...response };
+      // }) //setFormData
       .then((response) => {
-        // setFormData({ ...response });
-        return { ...response };
-      }) //setFormData
-      .then((formData) => {
-        console.log(formData);
         deckTemp.cards = deckTemp.cards.filter(
-          (card) => card.id !== formData.id
+          (card) => card.id !== response.id
         );
-        console.log(`Before ::::: ${deckTemp.cards}`);
-        deckTemp.cards.push(formData);
+        // console.log(`Before ::::: ${deckTemp.cards}`);
+        deckTemp.cards.push(response);
         setDeck({ ...deckTemp });
-        console.log(`After ::::: ${deckTemp.cards}`);
+        // console.log(`After ::::: ${deckTemp.cards}`);
       })
       .then(() => {
         decksTemp = decksTemp.filter((theDeck) => theDeck.id !== deck.id);
