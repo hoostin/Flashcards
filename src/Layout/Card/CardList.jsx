@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 
 import CardView from "./CardView";
-
+/**
+ * displays card list for a specific deck
+ */
 export default function CardList({
   deck,
   deckId,
@@ -21,8 +23,7 @@ export default function CardList({
 
     return () => abortController.abort();
   }, [deck, setCards]);
-  // console.log(deck.cards);
-  console.log(cards);
+
   const list = cards.map((card, index) => (
     <CardView
       card={card}

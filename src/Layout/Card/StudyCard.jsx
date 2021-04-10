@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import NextButton from "./NextButton";
-
+/**
+ * Component displays Current Flashcard that is being studied
+ * Display changes based of current card and
+ * front vs back view
+ */
 export default function StudyCard({ cards }) {
   const [cardNum, setCardNum] = useState(0);
   const [flip, setFlip] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   let content = "";
-  // if (deck.cards != undefined) {
-  //   console.log(deck.cards[cardNum]);
-  // } else {
-  //   console.log("render in progress");
-  // }
-  //   const [content, setContent] = useState("");
 
   if (flip) {
     if (cards.length !== 0) {
@@ -21,8 +19,6 @@ export default function StudyCard({ cards }) {
     if (cards.length !== 0) {
       content = cards[cardNum].front;
     }
-    // setContent("test");
-    // return null;
   }
   if (cards.length !== 0) {
     return (

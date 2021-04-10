@@ -29,7 +29,7 @@ export default function Deck({ deck, decks, setDecks }) {
     return () => abortController.abort();
   }
   return (
-    <div className="card mb-3">
+    <div className="card mb-3 ">
       <div className="card-body">
         <div className="d-flex  justify-content-between ">
           <h5 className="card-title">{deck.name}</h5>

@@ -2,7 +2,9 @@ import React from "react";
 
 import BreadCrumb from "../BreadCrumb";
 import CardForm from "../Forms/CardForm";
-
+/**
+ * parent create card component
+ */
 export default function CreateCard({
   decks,
   deck,

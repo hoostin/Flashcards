@@ -1,6 +1,10 @@
 import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import { deleteCard } from "../../utils/api";
+
+/**
+ * displays a specific card box as part of the cardList
+ */
 export default function CardView({ card: { id, front, back }, deck, setDeck }) {
   const url = useRouteMatch().url;
   function handleDelete(event) {
